@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nefryl MyLove 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Poppins,sans-serif;background:linear-gradient(180deg,#ffe6ef,#fff);color:#4a2730;overflow:hidden;}
+h1,h2{font-family:"Playfair Display",serif;}
+button{margin-top:20px;padding:12px 30px;border:none;border-radius:30px;background:#ff7aa2;color:white;font-size:1rem;cursor:pointer;}
+.page{position:absolute;width:100%;height:100%;padding:40px 25px;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:fadeSlide .6s ease;}
+.page.active{display:flex;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(20px) scale(.95);}to{opacity:1;transform:none;}}
+.backBtn{margin-top:10px;background:#aaa;color:white;padding:8px 16px;border-radius:20px;}
+.gallery-container{position:relative;width:100%;max-width:400px;margin-top:20px;}
+#showGalleryBtn{background:#ff7aa2;}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;opacity:0;transition:opacity 1s ease;}
+.gallery img{width:100%;border-radius:12px;cursor:pointer;transition:transform .3s;}
+.gallery img:hover{transform:scale(1.05);}
+#galleryBackground{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,red,orange,yellow,green,blue,indigo,violet);z-index:-2;overflow:hidden;}
+.heart{position:absolute;font-size:16px;animation:floatHeart linear forwards;z-index:-1;opacity:0.8;}
+@keyframes floatHeart{0%{transform:translateY(100vh) scale(0.5);opacity:1;}50%{transform:translateY(50vh) scale(1.1) rotate(45deg);}100%{transform:translateY(-10vh) scale(0);opacity:0;}}
+.music{background:#611c2e;color:white;padding:25px;border-radius:25px;}
+.timer{font-size:1.1rem;margin-top:15px;}
+.game-area{position:relative;width:100%;height:300px;background:#fff0f5;border-radius:20px;}
+.game-heart{position:absolute;font-size:28px;cursor:pointer;}
+.confetti{position:fixed;top:-10px;font-size:20px;animation:confetti 3s linear forwards;}
+@keyframes confetti{to{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+#typedBox{max-width:700px;background:white;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,.1);font-size:.95rem;line-height:1.6;min-height:260px;white-space:pre-wrap;overflow:auto;position:relative;}
+.cursor{display:inline-block;width:1ch;animation:blink 1s step-start infinite;}
+@keyframes blink{50%{opacity:0;}}
+#playVoiceBtn{position:fixed;top:20px;right:20px;background:#ff7aa2;border:none;padding:10px 15px;border-radius:50%;font-size:1.2rem;cursor:pointer;}
+#unlockedSongs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px;}
+#unlockedSongs button{width:100%;min-height:50px;padding:5px 8px;font-size:.75rem;border-radius:12px;background:linear-gradient(145deg,#ff92b0,#ff5a84);color:white;border:none;cursor:pointer;text-align:center;white-space:normal;overflow:hidden;transition:transform .2s, box-shadow .2s, background .3s;position:relative;}
+#unlockedSongs button:hover{transform:scale(1.03);box-shadow:0 4px 10px rgba(0,0,0,.25);}
+#unlockedSongs button.playing{animation:pulse 1.2s infinite;box-shadow:0 0 12px 3px rgba(255,255,255,0.6),0 4px 10px rgba(0,0,0,0.2);}
+#unlockedSongs button.playing::after{content:"🔊";position:absolute;top:2px;right:4px;font-size:.7rem;}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+#guessInput{padding:8px;border-radius:12px;border:1px solid #ccc;width:70%;max-width:300px;}
+#guessBtn{margin-left:8px;padding:8px 12px;border-radius:12px;background:#ff7aa2;color:white;border:none;cursor:pointer;transition:transform .2s, background .2s;}
+#guessBtn:hover{background:#ff4d85;transform:scale(1.05);}
+</style>
+</head>
+<body>
+
+<!-- Intro -->
+<div class="page active" id="intro">
+<h1>Hi Nefryl MyLove, Merry Christmas!🎄</h1>
+<p>I made this as a little gift to be remembered, just for you.</p>
+<button onclick="go('message')">Click Me</button>
+</div>
+
+<!-- Message -->
+<div class="page" id="message">
+<h2>You are my safe place ❤️</h2>
+<p>My happiness. My always.</p>
+<p>My Only Love 😘</p>
+<button onclick="go('gallery')">Next ➜</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fully Decorated Christmas Tree</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0b1622, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.scene {
+  width: 320px;
+  z-index: 2;
+}
+
+/* Stars */
+.star {
+  fill: white;
+  opacity: 0;
+  animation: fadeIn 0.4s forwards, twinkle 3s infinite alternate;
+}
+
+#topStar {
+  fill: gold;
+  opacity: 0;
+  animation: starIn 1.4s ease forwards, starPulse 2.8s infinite alternate;
+  filter: drop-shadow(0 0 12px gold);
+}
+
+/* Decorations */
+.light {
+  opacity: 0.8;
+  animation: blink 1.5s infinite alternate;
+}
+
+.bauble {
+  opacity: 0;
+  fill: crimson;
+  animation: fadeIn 0.8s forwards;
+}
+
+.garland {
+  stroke: #FFD700;
+  stroke-width: 2;
+  fill: none;
+  opacity: 0.7;
+}
+
+.candy {
+  fill: red;
+  stroke: white;
+  stroke-width: 1;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+.bell {
+  fill: gold;
+  stroke: orange;
+  stroke-width: 0.5;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+/* Animations */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes twinkle { from { opacity: 0.4; } to { opacity: 1; } }
+@keyframes starIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes starPulse { from { filter: drop-shadow(0 0 8px gold); } to { filter: drop-shadow(0 0 22px gold); } }
+@keyframes blink { from { opacity: 0.3; } to { opacity: 1; } }
+
+/* Snow */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  filter: blur(1px);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateX(40px) translateY(110vh); }
+}
+
+/* Shooting stars */
+.shooting-star {
+  position: fixed;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 0.8;
+  animation: shoot 1.4s linear forwards;
+}
+
+@keyframes shoot {
+  to { transform: translate(-400px, 300px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<svg viewBox="0 0 300 440" class="scene">
+  <!-- ⭐ Top star -->
+  <polygon id="topStar"
+    points="150,22 155,36 170,36 158,46 162,60 150,52 138,60 142,46 130,36 145,36" />
+
+  <g id="leftStars"></g>
+  <g id="rightStars"></g>
+
+  <g id="lights"></g>
+  <g id="baubles"></g>
+  <g id="garlands"></g>
+  <g id="candy"></g>
+  <g id="bells"></g>
+</svg>
+
+<script>
+const leftGroup = document.getElementById('leftStars');
+const rightGroup = document.getElementById('rightStars');
+const lightsGroup = document.getElementById('lights');
+const baublesGroup = document.getElementById('baubles');
+const garlandsGroup = document.getElementById('garlands');
+const candyGroup = document.getElementById('candy');
+const bellsGroup = document.getElementById('bells');
+const topStar = document.getElementById('topStar');
+
+const centerX = 150;
+let y = 50;
+let radius = 6;
+let delay = 0;
+const totalLayers = 220;
+
+/* 🎄 Tree build */
+for (let i = 0; i < totalLayers; i++) {
+  const angle = i * 0.32;
+  const layerRadius = radius * (i < totalLayers - 15 ? 1 : 1.2);
+
+  const starSizeLeft = Math.random() > 0.85 ? 2.5 : 1.6;
+  const starSizeRight = Math.random() > 0.85 ? 2.5 : 1.6;
+
+  const createStar = (x, size, group) => {
+    const s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    s.setAttribute("cx", x);
+    s.setAttribute("cy", y);
+    s.setAttribute("r", size);
+    s.classList.add("star");
+    s.style.animationDelay = `${delay}s`;
+    s.style.filter = size > 2 ? "drop-shadow(0 0 6px white)" : "drop-shadow(0 0 3px white)";
+    group.appendChild(s);
+  };
+
+  createStar(centerX + Math.cos(angle) * layerRadius, starSizeLeft, leftGroup);
+  createStar(centerX - Math.cos(angle) * layerRadius, starSizeRight, rightGroup);
+
+  if (i % 5 === 0) {
+    const light = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    light.setAttribute("cx", centerX + (Math.random() > 0.5 ? layerRadius : -layerRadius) * 0.9);
+    light.setAttribute("cy", y);
+    light.setAttribute("r", 1.5);
+    light.setAttribute("fill", ["red","green","blue","yellow","orange"][Math.floor(Math.random()*5)]);
+    light.classList.add("light");
+    lightsGroup.appendChild(light);
+  }
+
+  if (i % 12 === 0 && Math.random() > 0.6) {
+    const b = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    b.setAttribute("cx", centerX + (Math.random() > 0.5 ? layerRadius : -layerRadius) * 0.8);
+    b.setAttribute("cy", y);
+    b.setAttribute("r", 3 + Math.random() * 2);
+    b.classList.add("bauble");
+    baublesGroup.appendChild(b);
+  }
+
+  if (i % 25 === 0 && Math.random() > 0.6) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    c.setAttribute("x", centerX + (Math.random() > 0.5 ? layerRadius : -layerRadius) * 0.7 - 2);
+    c.setAttribute("y", y);
+    c.setAttribute("width", 4);
+    c.setAttribute("height", 10);
+    c.classList.add("candy");
+    candyGroup.appendChild(c);
+  }
+
+  if (i % 20 === 0 && Math.random() > 0.7) {
+    const bell = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    bell.setAttribute("cx", centerX + (Math.random() > 0.5 ? layerRadius : -layerRadius) * 0.75);
+    bell.setAttribute("cy", y);
+    bell.setAttribute("r", 3);
+    bell.classList.add("bell");
+    bellsGroup.appendChild(bell);
+  }
+
+  if (i % 30 === 0) {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    g.setAttribute("d", `M${centerX-layerRadius*0.8},${y} Q${centerX},${y+3} ${centerX+layerRadius*0.8},${y}`);
+    g.classList.add("garland");
+    garlandsGroup.appendChild(g);
+  }
+
+  y += 1.7;
+  radius += 0.45;
+  delay += 0.03;
+}
+
+setTimeout(() => topStar.style.opacity = 1, delay * 1000);
+
+/* ❄️ Snow */
+for (let i = 0; i < 120; i++) {
+  const snow = document.createElement('div');
+  snow.className = 'snowflake';
+  snow.style.left = Math.random() * 100 + 'vw';
+  snow.style.animationDuration = 6 + Math.random() * 6 + 's';
+  snow.style.opacity = Math.random() * 0.5 + 0.2;
+  snow.style.width = snow.style.height = (1 + Math.random() * 2) + 'px';
+  document.body.appendChild(snow);
+}
+
+/* 🌠 Shooting stars */
+setInterval(() => {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.style.top = Math.random() * 40 + 'vh';
+  star.style.left = 100 + Math.random() * 20 + 'vw';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 1500);
+}, 4000);
+</script>
+
+</body>
+</html>
+
+</div>
+
+
+<!-- Gallery -->
+<div class="page" id="gallery">
+<h2>Our Memories ✨</h2>
+<div id="galleryBackground"></div>
+<button id="showGalleryBtn">GALLERY 📸</button>
+<div class="gallery-container">
+<div class="gallery" id="galleryGrid">
+<img src="cute1.jpg" alt="Memory 1">
+<img src="cute2.jpg" alt="Memory 2">
+<img src="cute3.jpg" alt="Memory 3">
+<img src="cute4.jpg" alt="Memory 4">
+<img src="cute5.jpg" alt="Memory 5">
+<img src="cute6.jpg" alt="Memory 6">
+</div>
+</div>
+<button onclick="go('music')">Next ➜</button>
+<button class="backBtn" onclick="go('message')">⬅ Back</button>
+</div>
+
+<!-- Music -->
+<div class="page" id="music">
+<div class="music">
+<h2>Your Favorite Song 🎧</h2>
+<audio id="song" src="your-song.mp3"></audio>
+<button onclick="toggleMusic()">Play / Pause</button>
+</div>
+<button onclick="go('voice')">Next ➜</button>
+<button class="backBtn" onclick="go('gallery')">⬅ Back</button>
+</div>
+
+<!-- Voice -->
+<div class="page" id="voice">
+<h2>A message from me 💌</h2>
+<div id="typedBox"></div>
+<audio id="voiceMsg" src="voice-message.mp3"></audio>
+<button id="playVoiceBtn">🔊</button>
+<button onclick="go('songChallenge')">Next ➜</button>
+<button class="backBtn" onclick="go('music')">⬅ Back</button>
+</div>
+
+<!-- Song Challenge -->
+<div class="page" id="songChallenge">
+<h2>🎵 Song Challenge 🎵</h2>
+<p>Guess the song title to unlock and play it!</p>
+<p>Syempre mastress ka muna 🤣😜</p>
+<div id="currentGuess" style="margin-bottom:20px"></div>
+<h3>Unlocked Songs 🎶</h3>
+<div id="unlockedSongs"></div>
+<button id="nextSongBtn" style="display:none;margin-top:20px" onclick="go('timer')">Next ➜</button>
+<button class="backBtn" onclick="go('voice')">⬅ Back</button>
+</div>
+
+<!-- Timer -->
+<div class="page" id="timer">
+<h2>Our Time Together ⏳</h2>
+<div class="timer" id="countdown"></div>
+<button onclick="go('lock')">Next ➜</button>
+<button class="backBtn" onclick="go('songChallenge')">⬅ Back</button>
+</div>
+
+<!-- Lock -->
+<div class="page" id="lock">
+<h2>Secret Lock 🔐</h2>
+<p>Hint: Important Date For Us</p>
+<input id="pass" type="password" placeholder="********" style="padding:10px;border-radius:20px;border:none;text-align:center">
+<button onclick="unlock()">Unlock 💖</button>
+<button class="backBtn" onclick="go('timer')">⬅ Back</button>
+</div>
+
+<!-- Game -->
+<div class="page" id="game">
+<h2>Collect 5 hearts 💗</h2>
+<p id="score">0 / 5</p>
+<div class="game-area" id="gameArea"></div>
+</div>
+
+<!-- Proposal -->
+<div class="page" id="proposal">
+<h1>Will you be mine forever? 💍</h1>
+<button onclick="yes()">YES 💖</button>
+<button onclick="showAngry()">NO 😠</button>
+  <p id="angryEmoji" style="font-size: 50px; display: none;">😡</p>
+</div>
+
+<!-- Final -->
+<div class="page" id="final">
+<h1>You are my forever💝🔐</h1>
+<p>Ilove you always,<br><strong>Your Love Lou</strong></p>
+</div>
+
+<script>
+// Navigation and music
+function go(id){
+    // Stop music if leaving the music page
+    const song = document.getElementById('song');
+    if(song && !song.paused){
+        song.pause();
+        song.currentTime = 0;
+    }
+
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+    // Show the new page
+    document.getElementById(id).classList.add('active');
+}
+
+// Toggle play/pause music
+function toggleMusic(){
+    const song = document.getElementById('song');
+    if(song.paused){
+        song.play();
+    } else {
+        song.pause();
+    }
+}
+
+function unlock(){if(document.getElementById('pass').value==='05132025'){go('game');startGame()}else alert('Wrong password! Aray di alam💔');}
+
+// Timer
+const startDate=new Date('2025-05-05T00:00:00');
+setInterval(()=>{const now=new Date();const diff=now-startDate;const d=Math.floor(diff/86400000);const h=Math.floor(diff/3600000)%24;const m=Math.floor(diff/60000)%60;const s=Math.floor(diff/1000)%60;document.getElementById('countdown').innerText=`${d} days ${h} hours ${m} minutes ${s} seconds together 💕`;},1000);
+
+// Game
+let score=0;
+function startGame(){score=0;document.getElementById('score').innerText='0 / 5';const area=document.getElementById('gameArea');area.innerHTML='';const int=setInterval(()=>{const h=document.createElement('div');h.className='game-heart';h.innerText='💖';h.style.left=Math.random()*90+'%';h.style.top=Math.random()*80+'%';h.onclick=()=>{h.remove();document.getElementById('score').innerText=++score+' / 5';if(score>=5){clearInterval(int);go('proposal');}};area.appendChild(h);},700);}
+function yes(){go('final');for(let i=0;i<120;i++){const c=document.createElement('div');c.className='confetti';c.innerText='🎉';c.style.left=Math.random()*100+'vw';c.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),3000);}}
+function showAngry() {
+    // Show the angry emoji
+    document.getElementById("angryEmoji").style.display = "block";
+  }
+// Typed message
+const box=document.getElementById('typedBox');
+const loveMessage=`Hi sa pinakamamahal kong Nefryl,
+
+Uhm, you know naman na I’m not into talking. Dapat nga hindi ko na ito ivo‑voice message eh, pero I think mas matatouch ka pag ganito. You know naman how much I love you, diba? Hindi lang halata, pero sobraaaaaaang mahal kita.
+
+Like, ilang beses na akong umiyak dahil sa’yo—I mean, dahil naman sa kasalanan ko haha. Ang dami na nating napagdaanan, parang ang tagal‑tagal na nating magkakilala or magkausap. I didn’t expect na may makikilala akong tulad mo, na maibibigay ko yung buong trust at comfort ko. Grabe ‘yun ah hahaha.
+
+Like, pati address ko—na sobrang hirap kong ibigay sa past ko—naibigay ko sa’yo kahit ilang weeks pa lang tayong magkausap, tapos LDR pa tayo. Nakakabilib no? Thank you kasi ang haba‑haba ng pasensya mo sa’kin, as in sobrang haba. Inaccept mo na lang yung pagkachildish ko hahaha. Naiiyak ako ah, parang mas natatouch pa ako sa sarili ko kaysa sa’yo, char haha.
+
+And thank you din kasi you really appreciate me. Thank you sa lahat ng binigay mo—love, effort, and even the little things. I hope we can last long pa sa pagsasama natin, kahit LDR lang muna. Dito talaga nasusubok ang totoong relasyon. Nag‑aaway man tayo or nag‑break, ang mahalaga nagkabalikan pa rin ang mga puso natin.
+
+Akalain mo ‘yun, magiging part ka pa rin ng 2026 ko hahaha. My 2025 will always be lucky kasi nakilala kita. And whatever happens, ikaw pa rin ang pipiliin ko—araw‑araw, paulit‑ulit, walang pagsasawa.
+
+I love you so much. Mahal na mahal kita, tandaan mo ‘yan.
+Always and forever, my Neffy 🩷
+`;
+let idx=0;
+function typeMessage(){if(idx<loveMessage.length){box.innerHTML+=loveMessage.charAt(idx);idx++;box.scrollTop=box.scrollHeight;setTimeout(typeMessage,35);}else{box.innerHTML=loveMessage;}}
+typeMessage();
+
+// Voice play
+const voice=document.getElementById('voiceMsg');
+document.getElementById('playVoiceBtn').addEventListener('click',()=>{voice.currentTime=0;voice.play();});
+
+// Song Challenge
+const playlist=["Randomantic","Sining","1251","Palagi","Officially Missing You","Terrified","I Like You So Much Youll Know It","Maybe This Time","I Like You The Most","Ikaw At Ako","You Are My Sunshine"];
+const currentGuess=document.getElementById('currentGuess');
+const unlockedSongs=document.getElementById('unlockedSongs');
+const nextBtn=document.getElementById('nextSongBtn');
+let currentSong=0;let currentAudio=null;let currentButton=null;
+function jumbleWords(str){return str.split(' ').map(word=>{if(word.length<=3)return word;const arr=word.split('');for(let i=0;i<arr.length;i++){const j=Math.floor(Math.random()*arr.length);[arr[i],arr[j]]=[arr[j],arr[i]];}return arr.join('');}).join(' ');}
+function showNextSong(){currentGuess.innerHTML=`<div style='font-weight:bold;font-size:1.1rem;margin-bottom:5px;'>${jumbleWords(playlist[currentSong])}</div><input type='text' id='guessInput' placeholder='Type your guess here'><button id='guessBtn'>Submit 🎶</button>`;document.getElementById('guessBtn').onclick=()=>{const input=document.getElementById('guessInput');const guess=input.value.trim().toLowerCase();if(guess===playlist[currentSong].toLowerCase()){const btn=document.createElement('button');btn.textContent=playlist[currentSong];const audio=new Audio(`${playlist[currentSong]}.mp3`);btn.onclick=()=>{if(currentAudio&&currentAudio!==audio){currentAudio.pause();currentAudio.currentTime=0;if(currentButton)currentButton.classList.remove('playing');}if(audio.paused){audio.play();currentAudio=audio;currentButton=btn;btn.classList.add('playing');}else{audio.pause();audio.currentTime=0;btn.classList.remove('playing');}audio.onended=()=>{btn.classList.remove('playing');}};unlockedSongs.appendChild(btn);currentSong++;if(currentSong<playlist.length){showNextSong();}else{alert('Naks, galeng! Singerist yarn?! HAHAHA💖');nextBtn.style.display='inline-block';currentGuess.innerHTML='';}}else{alert('Luh shunga mali! 😂');}}}
+showNextSong();
+
+// Gallery button
+document.getElementById('showGalleryBtn').addEventListener('click',()=>{const gallery=document.getElementById('galleryGrid');gallery.style.display='grid';setTimeout(()=>{gallery.style.opacity='1';},50);});
+
+// Floating hearts
+function createHeart(){const heart=document.createElement('div');heart.className='heart';heart.innerText='💖';heart.style.left=Math.random()*90+'vw';heart.style.fontSize=(10+Math.random()*20)+'px';heart.style.animationDuration=(4+Math.random()*4)+'s';document.getElementById('galleryBackground').appendChild(heart);setTimeout(()=>heart.remove(),8000);}
+setInterval(()=>{if(document.getElementById('gallery').classList.contains('active'))createHeart();},300);
+</script>
+</body>
+</html>
